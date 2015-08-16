@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.parsets.js"></script>
+<link rel="stylesheet" href="d3.parsets.css"></link>
+</head>
+<body></body>
+
+<script>
+var chart = d3.parsets()
+      .dimensions(["US Work Eligible","Work Status","Language","English Class","Gender"]);
+var vis = d3.select("body").append("svg")
+    .attr("width", chart.width())
+    .attr("height", chart.height());
+d3.csv("students.csv", function(csv) {
+  vis.datum(csv).call(chart);
+});
+</script>
+</html>
